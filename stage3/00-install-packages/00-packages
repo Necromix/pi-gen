@@ -6,3 +6,7 @@ libfaad-dev libfftw3-dev librtlsdr-dev libusb-1.0-0-dev mesa-common-dev libglu1-
 git
 libgl1-mesa-dri
 xorg xinit
+rfkill
+gldriver-test
+fonts-droid-fallback
+fonts-liberation2

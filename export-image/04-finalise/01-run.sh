@@ -15,8 +15,10 @@ fi
 rm -f ${ROOTFS_DIR}/etc/apt/apt.conf.d/51cache
 rm -f ${ROOTFS_DIR}/usr/sbin/policy-rc.d
 rm -f ${ROOTFS_DIR}/usr/bin/qemu-arm-static
-if [ -e ${ROOTFS_DIR}/etc/ld.so.preload.disabled ]; then
-        mv ${ROOTFS_DIR}/etc/ld.so.preload.disabled ${ROOTFS_DIR}/etc/ld.so.preload
+if [ "${USE_QEMU}" != "1" ]; then
+	if [ -e ${ROOTFS_DIR}/etc/ld.so.preload.disabled ]; then
+		mv ${ROOTFS_DIR}/etc/ld.so.preload.disabled ${ROOTFS_DIR}/etc/ld.so.preload
+	fi
 fi
 
 rm -f ${ROOTFS_DIR}/etc/apt/sources.list~
@@ -43,6 +45,7 @@ for _FILE in $(find ${ROOTFS_DIR}/var/log/ -type f); do
 done
 
 rm -f "${ROOTFS_DIR}/root/.vnc/private.key"
+rm -f "${ROOTFS_DIR}/etc/vnc/updateid"
 
 update_issue $(basename ${EXPORT_DIR})
 install -m 644 ${ROOTFS_DIR}/etc/rpi-issue ${ROOTFS_DIR}/boot/issue.txt
