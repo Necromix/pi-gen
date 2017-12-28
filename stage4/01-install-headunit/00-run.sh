@@ -64,7 +64,7 @@ on_chroot << EOF
         git pull
     else
         echo "Cloning headunit from git"
-        git clone --recursive --depth 1 -j6 https://github.com/viktorgino/headunit-desktop.git
+        git clone --recursive --depth 1 https://github.com/viktorgino/headunit-desktop.git
         cd headunit-desktop
     fi
 
