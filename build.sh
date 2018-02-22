@@ -160,21 +160,32 @@ export QUILT_NO_DIFF_INDEX=1
 export QUILT_NO_DIFF_TIMESTAMPS=1
 export QUILT_REFRESH_ARGS="-p ab"
 
+source ${SCRIPT_DIR}/common
+source ${SCRIPT_DIR}/dependencies_check
+
 while [[ $# -gt 0 ]]
 do
 
 case $1 in
     -h|--headunit)
     export BUILD_HEADUNIT=1
-	echo "Will be rebuilding headunit"
+	log "Will be rebuilding headunit"
     ;;
     -g|--qtgstreamer)
     export BUILD_QTGSTREAMER=1
-	echo "Will be rebuilding qt-gstreamer"
+	log "Will be rebuilding qt-gstreamer"
+    ;;
+    -p|--qtpim)
+    export BUILD_QTPIM=1
+	log "Will be rebuilding qtpim"
     ;;
     -c|--qtcharts)
     export BUILD_QTCHARTS=1
-	echo "Will be rebuilding qtcharts"
+	log "Will be rebuilding qtcharts"
+    ;;
+    -o|--qofono)
+    export BUILD_QOFONO=1
+	log "Will be rebuilding libqofono"
     ;;
     *)
             # unknown option
@@ -182,10 +193,6 @@ case $1 in
 esac
 shift # past argument or value
 done
-
-source ${SCRIPT_DIR}/common
-source ${SCRIPT_DIR}/dependencies_check
-
 
 dependencies_check ${BASE_DIR}/depends
 

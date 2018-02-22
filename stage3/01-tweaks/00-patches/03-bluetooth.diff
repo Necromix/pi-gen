@@ -1,0 +1,14 @@
+Index: rootfs/etc/dbus-1/system.d/bluetooth.conf
+===================================================================
+--- a/rootfs/etc/dbus-1/system.d/bluetooth.conf
++++ b/rootfs/etc/dbus-1/system.d/bluetooth.conf
+@@ -43,4 +43,9 @@
+     <deny send_destination="org.bluez"/>
+   </policy>
+ 
++  <policy group="bluetooth">
++    <allow send_destination="org.bluez"/>
++	<allow send_interface="org.bluez.obex"/>
++  </policy>
++
+ </busconfig>

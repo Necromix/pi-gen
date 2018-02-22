@@ -51,6 +51,48 @@ else
     log "Skipping qtcharts compilation"
 fi
 
+#Compile qtpim
+if [ ! -d ${ROOTFS_DIR}/opt/qtpim ] || [ ! -z ${BUILD_QTPIM+x} ]; then    
+    log "Compiling qtpim"
+on_chroot << EOF
+    cd /opt
+
+    #Clone qtpim
+    git clone https://code.qt.io/qt/qtpim.git
+
+    cd qtpim/src
+    git checkout e3b79b98d8cc143f1e62c48b608e9f376442af14
+    #Make and install qtpim
+    qmake CONFIG+=release
+    make -j2
+    make install
+EOF
+else
+    log "Skipping qtpim compilation"
+fi
+
+#Compile libqofono
+if [ ! -d ${ROOTFS_DIR}/opt/libqofono ] || [ ! -z ${BUILD_QOFONO+x} ]; then    
+    log "Compiling libqofono"
+on_chroot << EOF
+    cd /opt
+
+    #Clone libqofono
+    git clone https://git.merproject.org/mer-core/libqofono.git
+    cd libqofono/src
+    #Make and install libqofono
+    qmake CONFIG+=release
+    make -j2
+    make install
+    cd ../plugin
+    qmake CONFIG+=release
+    make -j2
+    make install
+EOF
+else
+    log "Skipping libqofono compilation"
+fi
+
 #Compile and install headunit-desktop
 if [ ! -d ${ROOTFS_DIR}/opt/headunit-desktop ] || [ ! -z ${BUILD_HEADUNIT+x} ]; then    
     log "Compiling headunit-desktop..."

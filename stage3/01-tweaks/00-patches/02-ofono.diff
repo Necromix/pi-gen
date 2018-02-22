@@ -1,0 +1,14 @@
+Index: rootfs/etc/dbus-1/system.d/ofono.conf
+===================================================================
+--- a/rootfs/etc/dbus-1/system.d/ofono.conf
++++ b/rootfs/etc/dbus-1/system.d/ofono.conf
+@@ -26,4 +26,8 @@
+     <deny send_destination="org.ofono"/>
+   </policy>
+ 
++  <policy group="bluetooth">
++    <allow send_destination="org.ofono"/>
++  </policy>
++
+ </busconfig>
+ 
