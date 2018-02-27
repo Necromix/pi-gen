@@ -2,12 +2,19 @@ Index: rootfs/etc/dbus-1/system.d/ofono.conf
 ===================================================================
 --- a/rootfs/etc/dbus-1/system.d/ofono.conf
 +++ b/rootfs/etc/dbus-1/system.d/ofono.conf
-@@ -26,4 +26,8 @@
+@@ -26,4 +26,15 @@
      <deny send_destination="org.ofono"/>
    </policy>
  
 +  <policy group="bluetooth">
++    <allow own="org.ofono"/>
 +    <allow send_destination="org.ofono"/>
++    <allow send_interface="org.ofono.SimToolkitAgent"/>
++    <allow send_interface="org.ofono.PushNotificationAgent"/>
++    <allow send_interface="org.ofono.SmartMessagingAgent"/>
++    <allow send_interface="org.ofono.PositioningRequestAgent"/>
++    <allow send_interface="org.ofono.HandsfreeAudioAgent"/>
++    <allow send_interface="org.ofono.NetworkMonitorAgent"/>
 +  </policy>
 +
  </busconfig>

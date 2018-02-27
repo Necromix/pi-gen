@@ -9,3 +9,4 @@
  .endif
  
  .ifexists module-bluetooth-discover.so
+ 
