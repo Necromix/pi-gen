@@ -171,22 +171,6 @@ case $1 in
     export BUILD_HEADUNIT=1
 	log "Will be rebuilding headunit"
     ;;
-    -g|--qtgstreamer)
-    export BUILD_QTGSTREAMER=1
-	log "Will be rebuilding qt-gstreamer"
-    ;;
-    -p|--qtpim)
-    export BUILD_QTPIM=1
-	log "Will be rebuilding qtpim"
-    ;;
-    -c|--qtcharts)
-    export BUILD_QTCHARTS=1
-	log "Will be rebuilding qtcharts"
-    ;;
-    -o|--qofono)
-    export BUILD_QOFONO=1
-	log "Will be rebuilding libqofono"
-    ;;
     *)
             # unknown option
     ;;

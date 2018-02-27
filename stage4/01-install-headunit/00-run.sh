@@ -1,97 +1,13 @@
 #!/bin/bash -e
+log "Getting udev rules"
+wget -P ${ROOTFS_DIR}/etc/udev/rules.d https://raw.githubusercontent.com/snowdream/51-android/master/51-android.rules
 
-#Compile qt-gstreamer
-if [ ! -d ${ROOTFS_DIR}/opt/qt-gstreamer ] || [ ! -z ${BUILD_QTGSTREAMER+x} ]; then    
-    log "Compiling qt-gstreamer..."
+log "Setting bluetooth permissions"
+
 on_chroot << EOF
-    cd /opt
-
-    #Clone QtGstreamer
-    if [ -d "qt-gstreamer" ]; then
-        cd qt-gstreamer
-        git pull
-    else
-        git clone git://anongit.freedesktop.org/gstreamer/qt-gstreamer
-        cd qt-gstreamer
-    fi
-
-    #Create build dir
-    mkdir build
-    cd build
-
-    #cmake QtGstreamer
-    cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib/arm-linux-gnueabihf -DCMAKE_INSTALL_INCLUDEDIR=include -DQT_VERSION=5 -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS=-std=c++11
-
-    #Make and install QtGstreamer
-    make -j6
-    make install
+adduser pi bluetooth
+adduser pulse bluetooth
 EOF
-else
-    log "Skipping qt-gstreamer compilation"
-fi
-
-#Compile qtcharts
-if [ ! -d ${ROOTFS_DIR}/opt/qtcharts ] || [ ! -z ${BUILD_QTCHARTS+x} ]; then    
-    log "Compiling qtcharts"
-on_chroot << EOF
-    cd /opt
-
-    #Clone qtcharts
-    git clone https://github.com/qt/qtcharts.git -b 5.7
-
-    cd qtcharts/src
-    git checkout tags/v5.7.1
-
-    #Make and install qtcharts
-    qmake CONFIG+=release
-    make -j4
-    make install
-EOF
-else
-    log "Skipping qtcharts compilation"
-fi
-
-#Compile qtpim
-if [ ! -d ${ROOTFS_DIR}/opt/qtpim ] || [ ! -z ${BUILD_QTPIM+x} ]; then    
-    log "Compiling qtpim"
-on_chroot << EOF
-    cd /opt
-
-    #Clone qtpim
-    git clone https://code.qt.io/qt/qtpim.git
-
-    cd qtpim/src
-    git checkout e3b79b98d8cc143f1e62c48b608e9f376442af14
-    #Make and install qtpim
-    qmake CONFIG+=release
-    make -j2
-    make install
-EOF
-else
-    log "Skipping qtpim compilation"
-fi
-
-#Compile libqofono
-if [ ! -d ${ROOTFS_DIR}/opt/libqofono ] || [ ! -z ${BUILD_QOFONO+x} ]; then    
-    log "Compiling libqofono"
-on_chroot << EOF
-    cd /opt
-
-    #Clone libqofono
-    git clone https://git.merproject.org/mer-core/libqofono.git
-    cd libqofono/src
-    #Make and install libqofono
-    qmake CONFIG+=release
-    make -j2
-    make install
-    cd ../plugin
-    qmake CONFIG+=release
-    make -j2
-    make install
-EOF
-else
-    log "Skipping libqofono compilation"
-fi
 
 #Compile and install headunit-desktop
 if [ ! -d ${ROOTFS_DIR}/opt/headunit-desktop ] || [ ! -z ${BUILD_HEADUNIT+x} ]; then    
@@ -115,7 +31,7 @@ on_chroot << EOF
 
     #compile headunit-desktop
     make clean
-    qmake CONFIG+=welleio -config release 
+    qmake CONFIG+=welleio CONFIG+=rpi -config release 
     make -j4
     chown -R pi:pi /opt/headunit-desktop
 EOF
