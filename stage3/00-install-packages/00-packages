@@ -9,6 +9,7 @@ qtbase5-private-dev
 libqt5gstreamer-dev libqt5gstreamerquick-1.0-0 libqt5gstreamer-1.0-0 qml-module-ofono libqofono-dev libqt5charts5-dev qml-module-qtcharts qml-module-qtcontacts
 gstreamer1.0-omx gstreamer1.0-omx-rpi gstreamer1.0-omx-rpi-config
 git
+libcanberra-dev
 libgl1-mesa-dri
 xorg xinit
 rfkill
