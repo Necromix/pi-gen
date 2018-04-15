@@ -12,6 +12,9 @@ git
 libcanberra-dev libgconf2-dev libpulse-dev
 libgl1-mesa-dri
 xorg xinit
+raspberrypi-artwork
+policykit-1
+gvfs
 rfkill
 gldriver-test
 fonts-droid-fallback
