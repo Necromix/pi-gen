@@ -54,4 +54,18 @@
 
 # Enable audio (loads snd_bcm2835)
 dtparam=audio=on
-dtoverlay=vc4-kms-v3d
+
+# Enable VC4 GL driver with fake kms
+dtoverlay=vc4-fkms-v3d
+
+# Set GPU memory to 256 MB
+gpu_mem=256
+
+# Rotate LCD on DSI port
+lcd_rotate=2
+
+# Disable built-in bluetooth
+dtoverlay=pi3-disable-bt
+
+# Disable splash screen
+disable_splash=1
