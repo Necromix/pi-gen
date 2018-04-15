@@ -1,0 +1,15 @@
+[Unit]
+Description=Viktorgino's Headunit Desktop Service
+After=multi-user.target
+
+[Service]
+Type=idle
+User=pi
+Group=pi
+Environment="QT_QPA_PLATFORM=eglfs"
+ExecStart=/opt/headunit-desktop/headunit-app
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
