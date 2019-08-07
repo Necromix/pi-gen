@@ -3,7 +3,7 @@ build-essential cmake protobuf-compiler
 libusb-1.0-0-dev libssl-dev openssl libglib2.0-dev libboost-dev libudev-dev libtag1-dev libprotobuf-dev
 libgstreamer1.0-dev gstreamer1.0-plugins-base-apps gstreamer1.0-plugins-bad gstreamer1.0-libav gstreamer1.0-alsa libgstreamer-plugins-base1.0-dev gstreamer1.0-pulseaudio
 libfaad-dev libfftw3-dev librtlsdr-dev libusb-1.0-0-dev mesa-common-dev libglu1-mesa-dev zlib1g-dev  portaudio19-dev libsndfile1-dev libsamplerate0-dev 
-ofono ofono-dev ofono-phonesim pulseaudio bluez bluez-obexd pulseaudio-module-bluetooth
+ofono ofono-dev ofono-phonesim pulseaudio bluez bluez-obexd pulseaudio-module-bluetooth  pulseaudio-module-gconf
 libqt5xmlpatterns5-dev libqt5bluetooth5 qtconnectivity5-dev qml-module-qtbluetooth libkf5bluezqt-dev qml-module-org-kde-bluezqt
 qtbase5-private-dev
 libqt5gstreamer-dev libqt5gstreamerquick-1.0-0 libqt5gstreamer-1.0-0 qml-module-ofono libqofono-dev libqt5charts5-dev qml-module-qtcharts qml-module-qtcontacts
