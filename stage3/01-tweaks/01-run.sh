@@ -1,7 +1,8 @@
 #!/bin/bash -e
 
 log "Getting udev rules"
-wget -P ${ROOTFS_DIR}/etc/udev/rules.d https://raw.githubusercontent.com/snowdream/51-android/master/51-android.rules
+install -v -d					                "${ROOTFS_DIR}/etc/udev/rules.d "
+install -m 644 files/51-android.rules           "${ROOTFS_DIR}/etc/udev/rules.d/"
 
 log "Copy environment file"
 install -v -d					                "${ROOTFS_DIR}/etc"

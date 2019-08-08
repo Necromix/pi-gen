@@ -1,15 +1,6 @@
 #!/bin/bash -e
-log "Getting udev rules"
-wget -P ${ROOTFS_DIR}/etc/udev/rules.d https://raw.githubusercontent.com/snowdream/51-android/master/51-android.rules
 
-log "Setting bluetooth permissions"
-
-on_chroot << EOF
-adduser pi bluetooth
-adduser pulse bluetooth
-EOF
-
-#Compile and install headunit-desktop
+Compile and install headunit-desktop
 if [ ! -d ${ROOTFS_DIR}/opt/headunit-desktop ] || [ ! -z ${BUILD_HEADUNIT+x} ]; then    
     log "Compiling headunit-desktop..."
 on_chroot << EOF
