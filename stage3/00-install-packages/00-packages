@@ -5,10 +5,10 @@ gstreamer1.0-x gstreamer1.0-omx gstreamer1.0-plugins-base gstreamer1.0-plugins-g
 alsa-utils
 libgstreamer1.0-dev gstreamer1.0-plugins-base-apps gstreamer1.0-plugins-bad gstreamer1.0-libav gstreamer1.0-alsa libgstreamer-plugins-base1.0-dev gstreamer1.0-pulseaudio
 libfaad-dev libfftw3-dev librtlsdr-dev libusb-1.0-0-dev mesa-common-dev libglu1-mesa-dev zlib1g-dev  portaudio19-dev libsndfile1-dev libsamplerate0-dev 
-ofono ofono-dev ofono-phonesim pulseaudio bluez bluez-obexd pulseaudio-module-bluetooth  pulseaudio-module-gconf
+ofono ofono-dev ofono-phonesim pulseaudio bluez bluez-obexd pulseaudio-module-bluetooth 
 libqt5xmlpatterns5-dev libqt5bluetooth5 qtconnectivity5-dev qml-module-qtbluetooth libkf5bluezqt-dev qml-module-org-kde-bluezqt
 qtbase5-private-dev
-libqt5gstreamer-dev libqt5gstreamerquick-1.0-0 libqt5gstreamer-1.0-0 qml-module-ofono libqofono-dev libqt5charts5-dev qml-module-qtcharts qml-module-qtcontacts
+libqt5gstreamer-dev libqt5gstreamerquick-1.0-0 libqt5gstreamer-1.0-0 libqt5charts5-dev qml-module-qtcharts
 gstreamer1.0-omx gstreamer1.0-omx-rpi gstreamer1.0-omx-rpi-config
 git
 libcanberra-dev libgconf2-dev libpulse-dev
