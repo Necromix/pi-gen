@@ -1,5 +1,7 @@
 #!/bin/bash -e
 
+rm -f "${ROOTFS_DIR}/etc/systemd/system/dhcpcd.service.d/wait.conf"
+
 log "Getting udev rules"
 install -v -d					                "${ROOTFS_DIR}/etc/udev/rules.d "
 install -m 644 files/51-android.rules           "${ROOTFS_DIR}/etc/udev/rules.d/"
