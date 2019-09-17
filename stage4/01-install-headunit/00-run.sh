@@ -1,10 +1,11 @@
 #!/bin/bash -e
 
-Compile and install headunit-desktop
+##Compile and install headunit-desktop
 if [ ! -d ${ROOTFS_DIR}/opt/headunit-desktop ] || [ ! -z ${BUILD_HEADUNIT+x} ]; then    
     log "Compiling headunit-desktop..."
 on_chroot << EOF
-    cd /opt
+    mkdir /opt/headunit-desktop
+    cd /home/pi
 
     ### Build headunit 
     if [ -d "headunit-desktop" ]; then
@@ -13,17 +14,17 @@ on_chroot << EOF
         git pull
     else
         echo "Cloning headunit from git"
-        git clone --recursive --depth 1 https://github.com/viktorgino/headunit-desktop.git
+        git clone --recursive --depth 10 https://github.com/viktorgino/headunit-desktop.git
         cd headunit-desktop
     fi
 
     #Generate protobuf with proto
-    protoc --proto_path=headunit/hu/ --cpp_out=headunit/hu/generated.x64/ headunit/hu/hu.proto
+    protoc --proto_path=modules/android-auto/headunit/hu/ --cpp_out=modules/android-auto/headunit/hu/generated.x64/ modules/android-auto/headunit/hu/hu.proto
 
-    #compile headunit-desktop
-    make clean
-    qmake CONFIG+=welleio CONFIG+=rpi -config release 
+    # compile headunit-desktop
+    PREFIX=/opt/headunit-desktop qmake headunit-desktop.pro
     make -j4
+    make install
     chown -R pi:pi /opt/headunit-desktop
 EOF
 else

@@ -23,3 +23,7 @@ fonts-droid-fallback
 fonts-liberation2
 obconf
 arandr
+plymouth
+libairspy0 libpulse0 libmp3lame0 libsoapysdr0.6 libmpg123-0 libqofono-qt5-0 libqt5gstreamerquick-1.0-0 libqt5contacts5
+qml-module-qtgstreamer qml-module-ofono qml-module-qtcontacts
+libqofono-dev libqt5gstreamer-dev libmpg123-dev libsoapysdr-dev libmp3lame-dev libpulse-dev libairspy-dev
