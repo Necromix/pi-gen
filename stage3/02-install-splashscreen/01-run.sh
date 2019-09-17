@@ -9,11 +9,15 @@ install -d "${ROOTFS_DIR}/usr/share/plymouth/themes/headunit/"
 install -m 644 files/* "${ROOTFS_DIR}/usr/share/plymouth/themes/headunit/"
 
 log "Set default plymouth theme and update initramfs"
+
 on_chroot << EOF
 plymouth-set-default-theme headunit
-update-initramfs -d -k all
-update-initramfs -c -k $(uname -r)
 EOF
+
+# on_chroot << EOF
+# update-initramfs -d -k all
+# update-initramfs -c -k $(uname -r)
+# EOF
 
 log "Disable login console"
 on_chroot << EOF
