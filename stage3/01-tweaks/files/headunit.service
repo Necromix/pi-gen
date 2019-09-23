@@ -7,7 +7,7 @@ Type=idle
 User=pi
 Group=pi
 Environment="QT_QPA_PLATFORM=eglfs"
-WorkingDirectory=/home/pi/headunit-desktop
+WorkingDirectory=/opt/headunit-desktop
 ExecStart=/opt/headunit-desktop/headunit-app
 Restart=always
 RestartSec=3
