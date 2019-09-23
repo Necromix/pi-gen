@@ -2,9 +2,10 @@
 
 rm -f "${ROOTFS_DIR}/etc/systemd/system/dhcpcd.service.d/wait.conf"
 
-log "Getting udev rules"
+log "Copy udev rules"
 install -v -d					                "${ROOTFS_DIR}/etc/udev/rules.d "
 install -m 644 files/51-android.rules           "${ROOTFS_DIR}/etc/udev/rules.d/"
+install -m 644 files/99-backlight.rules         "${ROOTFS_DIR}/etc/udev/rules.d/"
 
 log "Copy environment file"
 install -v -d					                "${ROOTFS_DIR}/etc"
