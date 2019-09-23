@@ -5,7 +5,7 @@ if [ ! -d ${ROOTFS_DIR}/opt/headunit-desktop ] || [ ! -z ${BUILD_HEADUNIT+x} ]; 
 
     install -v -d					                "${ROOTFS_DIR}/opt/headunit-desktop"
 
-    log "Compiling headunit-desktop..."
+    log "Building headunit-desktop..."
 on_chroot << EOF
     cd /home/pi
 
@@ -20,12 +20,16 @@ on_chroot << EOF
         cd headunit-desktop
     fi
 
-    #Generate protobuf with proto
+    echo "Generate protobuf with proto"
+    
     protoc --proto_path=modules/android-auto/headunit/hu/ --cpp_out=modules/android-auto/headunit/hu/generated.x64/ modules/android-auto/headunit/hu/hu.proto
 
-    # compile headunit-desktop
-    qmake -set prefix /opt/headunit-desktop headunit-desktop.pro
+    echo "Compile headunit-desktop"
+    echo "Run qmake"
+    qmake PREFIX=/opt/headunit-desktop RPI=1 headunit-desktop.pro
+    echo "Run make"
     make -j4
+    echo "Run make install"
     make install
 EOF
 else
